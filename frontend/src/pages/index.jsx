@@ -1,5 +1,5 @@
 // pages/index.js
-import './globals.css';
+// import './globals.css';
 import { useRouter } from 'next/router';
 
 //bg-[#0d0d0d] actually this is the color of the background used before

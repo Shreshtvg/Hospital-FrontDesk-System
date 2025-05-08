@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import '../../globals.css';
+// import '../../globals.css';
 
 export default function DoctorManagement() {
   const [doctors, setDoctors] = useState([]);

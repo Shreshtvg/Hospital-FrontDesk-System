@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { jwtDecode } from "jwt-decode";
-import "../globals.css";
+// import "../globals.css";
 
 export default function DoctorDashboard() {
   const router = useRouter();

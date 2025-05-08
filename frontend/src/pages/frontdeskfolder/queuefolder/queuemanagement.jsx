@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from "next/router"; 
-import '../../globals.css';
+// import '../../globals.css';
 
 export default function QueueManagement() {
   const [queue, setQueue] = useState([]);

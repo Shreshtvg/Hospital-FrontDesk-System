@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import QueueManagement from "../queuefolder/queuemanagement";
 import AppointmentManagement from "../appointmentfolder/appointmentmanagement";
 import DoctorManagement from "../doctorfolder/doctormanagement";
-import "../../globals.css";
+// import "../../globals.css";
 
 export default function Dashboard() {
   const [activeTab, setActiveTab] = useState("queue");
