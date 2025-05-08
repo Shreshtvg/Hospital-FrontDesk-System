@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 // import '../../globals.css';
-import API_BASE_URL from "../..config";
+import API_BASE_URL from '../../../../config';
 
 export default function Home() {
   const [username, setUsername] = useState('');

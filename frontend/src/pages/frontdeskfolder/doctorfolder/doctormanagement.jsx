@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 // import '../../globals.css';
-import { API_BASE_URL } from '../../config';
+import API_BASE_URL from '../../../../config';
 
 export default function DoctorManagement() {
   const [doctors, setDoctors] = useState([]);
