@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 // import '../../globals.css';
+import { API_BASE_URL } from '../../config';
 
 export default function AddOrEditDoctor() {
   const router = useRouter();
@@ -24,7 +25,7 @@ export default function AddOrEditDoctor() {
 
   const fetchDoctorDetails = async (doctorId) => {
     try {
-      const res = await fetch(`http://localhost:8000/doctors/${doctorId}`, {
+      const res = await fetch(`${API_BASE_URL}/doctors/${doctorId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -51,8 +52,8 @@ export default function AddOrEditDoctor() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const url = isEditMode
-      ? `http://localhost:8000/doctors/${id}`
-      : `http://localhost:8000/doctors`;
+      ? `${API_BASE_URL}/doctors/${id}`
+      : `${API_BASE_URL}/doctors`;
 
     const method = isEditMode ? 'PUT' : 'POST';
 

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from "next/router";
 // import '../../globals.css';
+import { API_BASE_URL } from '../../config';
 
 export default function AppointmentManagement() {
   const router = useRouter();
@@ -16,7 +17,7 @@ export default function AppointmentManagement() {
   }, []);
 
   const fetchAppointments = async () => {
-    const res = await fetch('http://localhost:8000/appointments', {
+    const res = await fetch('${API_BASE_URL}/appointments', {
       headers: { 'Authorization': `Bearer ${token}` }
     });
     if (res.ok) {
@@ -27,7 +28,7 @@ export default function AppointmentManagement() {
 
   const addAppointment = async () => {
     if (!patientName || !doctorId || !appointmentTime) return;
-    const res = await fetch('http://localhost:8000/appointments', {
+    const res = await fetch(`${API_BASE_URL}/appointments`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -56,7 +57,7 @@ export default function AppointmentManagement() {
       window.location.href = '/login';
       return;
     }
-    const resqueue = await fetch('http://localhost:8000/queue', {
+    const resqueue = await fetch(`${API_BASE_URL}/queue`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -75,7 +76,7 @@ export default function AppointmentManagement() {
   };
 
   const deleteAppointment = async (appointmentId,patientNameused) => {
-    const res = await fetch(`http://localhost:8000/appointments/${appointmentId}`, {
+    const res = await fetch(`${API_BASE_URL}/appointments/${appointmentId}`, {
       method: 'DELETE',
       headers: { 'Authorization': `Bearer ${token}` }
     });
@@ -89,7 +90,7 @@ export default function AppointmentManagement() {
     } else {
       alert("Failed to delete appointment");
     }
-    const res2 = await fetch(`http://localhost:8000/queue/${patientNameused}`, {
+    const res2 = await fetch(`${API_BASE_URL}/queue/${patientNameused}`, {
       method: 'DELETE',
       headers: { 'Authorization': `Bearer ${token}` }
     });

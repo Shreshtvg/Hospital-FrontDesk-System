@@ -4,6 +4,7 @@ import AppointmentManagement from "../appointmentfolder/appointmentmanagement";
 import DoctorManagement from "../doctorfolder/doctormanagement";
 // import "../../globals.css";
 
+
 export default function Dashboard() {
   const [activeTab, setActiveTab] = useState("queue");
   const [underlineStyle, setUnderlineStyle] = useState({});

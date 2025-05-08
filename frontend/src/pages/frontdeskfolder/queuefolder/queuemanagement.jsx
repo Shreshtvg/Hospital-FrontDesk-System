@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from "next/router"; 
 // import '../../globals.css';
+import { API_BASE_URL } from '../../config';
 
 export default function QueueManagement() {
   const [queue, setQueue] = useState([]);
@@ -14,7 +15,7 @@ export default function QueueManagement() {
 
   const fetchQueue = async () => {
     try {
-      const res = await fetch('http://localhost:8000/queue', {
+      const res = await fetch(`${API_BASE_URL}/queue`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
 
@@ -37,7 +38,7 @@ export default function QueueManagement() {
 
   // Function to clear the entire queue
   const clearQueue = async () => {
-    const res = await fetch('http://localhost:8000/queue-deleteall', {
+    const res = await fetch(`${API_BASE_URL}/queue-deleteall`, {
       method: 'DELETE',
       headers: { 'Authorization': `Bearer ${token}` }
     });

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 // import '../../globals.css';
+import { API_BASE_URL } from '../../config';
 
 export default function DoctorManagement() {
   const [doctors, setDoctors] = useState([]);
@@ -14,7 +15,7 @@ export default function DoctorManagement() {
 
   const fetchDoctors = async () => {
     try {
-      const res = await fetch('http://localhost:8000/doctors', {
+      const res = await fetch(`${API_BASE_URL}/doctors`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -42,7 +43,7 @@ export default function DoctorManagement() {
     if (!confirm('Are you sure you want to delete this doctor?')) return;
 
     try {
-      const res = await fetch(`http://localhost:8000/doctors/${id}`, {
+      const res = await fetch(`${API_BASE_URL}/doctors/${id}`, {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${token}` },
       });

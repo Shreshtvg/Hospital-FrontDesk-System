@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 // import '../globals.css';
+import { API_BASE_URL } from '../config';
 
 export default function DoctorLogin() {
   const router = useRouter();
@@ -10,7 +11,7 @@ export default function DoctorLogin() {
   const handleDoctorLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch('http://localhost:8000/doctor/login', {
+      const res = await fetch(`${API_BASE_URL}/doctor/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password })

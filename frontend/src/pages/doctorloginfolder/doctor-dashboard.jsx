@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { jwtDecode } from "jwt-decode";
 // import "../globals.css";
+import { API_BASE_URL } from '../config';
 
 export default function DoctorDashboard() {
   const router = useRouter();
@@ -47,7 +48,7 @@ export default function DoctorDashboard() {
   const fetchQueue = async (doctorId) => {
     try {
       const doctoken = localStorage.getItem("doctortoken");
-      const res = await fetch(`http://localhost:8000/doctor-queue?doctor_id=${doctorId}`, {
+      const res = await fetch(`${API_BASE_URL}/doctor-queue?doctor_id=${doctorId}`, {
         headers: { Authorization: `Bearer ${doctoken}` },
       });
       if (res.ok) {
@@ -66,7 +67,7 @@ export default function DoctorDashboard() {
   const handleDone = async (patientId) => {
     try {
       const doctoken = localStorage.getItem("doctortoken");
-      const res = await fetch(`http://localhost:8000/doctorremovepatient/${patientId}?doctor_id=${doctorId}`, {
+      const res = await fetch(`${API_BASE_URL}/doctorremovepatient/${patientId}?doctor_id=${doctorId}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${doctoken}` },
       });
