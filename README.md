@@ -36,9 +36,12 @@ A web-based Hospital FrontDesk System that allows patients to book appointments 
 ---
 
 ### 🔧 Frontend Setup and Start
+
+```bash
 cd frontend
 npm install
 npm run dev
+```
 
 ### 🔧 Backend Setup and Start
 
