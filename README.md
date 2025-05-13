@@ -18,6 +18,12 @@ A web-based Hospital FrontDesk System that allows patients to book appointments 
 
 ---
 
+## 🛠️ View Website
+To Test the Website, go to https://hospital-front-desk-system.vercel.app/
+to check frontdesk login,
+Username - s
+password - 123
+
 ## 🛠️ Tech Stack
 
 | Frontend | Backend | Auth | Deployment |
