@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-// import '../../globals.css';
 import API_BASE_URL from '../../../../config';
 
 export default function DoctorManagement() {
@@ -68,52 +67,56 @@ export default function DoctorManagement() {
 
   return (
     <div className="bg-[#0d0d0d] p-6 rounded-3xl shadow-lg border border-neutral-800">
-      <div className="flex justify-between items-center mb-6">
-        <h2 className="text-2xl font-semibold text-white px-10 w-full">Doctor Profiles</h2>
+      {/* Header */}
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
+        <h2 className="text-2xl font-semibold text-white w-full md:px-10">Doctor Profiles</h2>
         <Link href="/frontdeskfolder/doctorfolder/adddoctor">
-          <button className="bg-gradient-to-r from-indigo-500 to-fuchsia-500 text-white px-9 py-1 rounded-xl font-semibold hover:brightness-110 transition-all">
+          <button className="bg-gradient-to-r from-indigo-500 to-fuchsia-500 text-white px-6 py-2 rounded-xl font-semibold hover:brightness-110 transition-all w-full md:w-auto">
             + Add Doctor
           </button>
         </Link>
       </div>
 
+      {/* Status Messages */}
       {loading && <p className="text-white">Loading doctors...</p>}
       {error && <p className="text-red-500">{error}</p>}
-
       {!loading && !error && doctors.length === 0 && (
         <p className="text-neutral-400">No doctors found.</p>
       )}
 
+      {/* Doctors Table */}
       {!loading && !error && doctors.length > 0 && (
-        <table className="min-w-full table-auto text-left text-white">
-          <thead>
-            <tr>
-              <th className="px-4 py-2 border-b">ID</th>
-              <th className="px-4 py-2 border-b">Name</th>
-              <th className="px-4 py-2 border-b">Specialization</th>
-              <th className="px-4 py-2 border-b">Gender</th>
-              <th className="px-4 py-2 border-b">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {doctors.map((doc) => (
-              <tr key={doc.id} className="border-b">
-                <td className="px-4 py-2">{doc.id}</td>
-                <td className="px-4 py-2">{doc.name}</td>
-                <td className="px-4 py-2">{doc.specialization}</td>
-                <td className="px-4 py-2">{doc.gender}</td>
-                <td className="px-4 py-2">
-                  <button
-                    onClick={() => deleteDoctor(doc.id)}
-                    className="bg-red-500 hover:bg-red-600 text-white px-4 py-1 rounded-lg transition-all"
-                  >
-                    Remove
-                  </button>
-                </td>
+        <div className="overflow-x-auto rounded-2xl border border-neutral-800">
+          <table className="min-w-full text-sm text-center text-white bg-neutral-900 rounded-xl overflow-hidden">
+            <thead className="bg-neutral-800 text-neutral-400">
+              <tr>
+                <th className="px-4 py-3 whitespace-nowrap">ID</th>
+                <th className="px-4 py-3 whitespace-nowrap">Name</th>
+                <th className="px-4 py-3 whitespace-nowrap">Specialization</th>
+                <th className="px-4 py-3 whitespace-nowrap">Gender</th>
+                <th className="px-4 py-3 whitespace-nowrap">Actions</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {doctors.map((doc, idx) => (
+                <tr key={doc.id} className={idx % 2 === 0 ? "bg-neutral-900" : "bg-neutral-950"}>
+                  <td className="px-4 py-3 whitespace-nowrap">{doc.id}</td>
+                  <td className="px-4 py-3 whitespace-nowrap">{doc.name}</td>
+                  <td className="px-4 py-3 whitespace-nowrap">{doc.specialization}</td>
+                  <td className="px-4 py-3 whitespace-nowrap">{doc.gender}</td>
+                  <td className="px-4 py-3 whitespace-nowrap">
+                    <button
+                      onClick={() => deleteDoctor(doc.id)}
+                      className="bg-red-500 hover:bg-red-600 text-white px-4 py-1 rounded-lg transition-all"
+                    >
+                      Remove
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
     </div>
   );
